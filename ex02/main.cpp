@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Array.hpp"
+#include <cstdlib>
 
 // __attribute__((destructor))
 // static void destructor() {
@@ -58,6 +59,6 @@ int main(int, char**)
     {
         numbers[i] = rand();
     }
-    delete [] mirror;//
+    delete [] mirror;
     return 0;
 }

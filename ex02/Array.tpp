@@ -9,7 +9,10 @@ Array<T>::Array(void) : _size(0), _array(new T[0]) {
 template <typename T>
 Array<T>::Array(unsigned int len) : _size(len), _array(new T[len]) {
 	std::cout << "Array: initialization constructor called" << std::endl;
-	if (_array == NULL) std::cerr << "Memory allocation failed" << std::endl;
+	if (_array == NULL) {
+		_size = 0;
+		std::cerr << "Memory allocation failed" << std::endl;
+	}
 }
 
 template <typename T>
@@ -22,6 +25,7 @@ template <typename T>
 Array<T>::Array(const Array<T>& array) : _size(array.size()) , _array(new T[_size]) {
 	std::cout << "Array: copy constructor called" << std::endl;
 	if (_array == NULL) {
+		_size = 0;
 		std::cerr << "Memory allocation failed" << std::endl;
 		return ;
 	}
@@ -38,6 +42,7 @@ Array<T>& Array<T>::operator=(const Array<T>& array) {
 		delete _array;
 		_array = new T[_size];
 		if (_array == NULL) {
+			_size = 0;
 			std::cerr << "Memory allocation failed" << std::endl;
 			return *this;
 		}
