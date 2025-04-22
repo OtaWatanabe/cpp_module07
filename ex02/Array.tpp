@@ -18,7 +18,7 @@ Array<T>::Array(unsigned int len) : _size(len), _array(new T[len]) {
 template <typename T>
 Array<T>::~Array() {
 	std::cout << "Array: destructor called" << std::endl;
-	delete _array;
+	delete [] _array;
 }
 
 template <typename T>
@@ -39,7 +39,7 @@ Array<T>& Array<T>::operator=(const Array<T>& array) {
 	std::cout << "Array: copy assignement operator called" << std::endl;
 	if (this != &array) {
 		_size = array.size();
-		delete _array;
+		delete [] _array;
 		_array = new T[_size];
 		if (_array == NULL) {
 			_size = 0;
